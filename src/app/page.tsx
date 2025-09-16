@@ -5,6 +5,7 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import type { Container } from "@tsparticles/engine";
 import { FaGithub, FaApple, FaStar } from 'react-icons/fa';
+import { SiKofi } from 'react-icons/si';
 
 export default function Home() {
   useEffect(() => {
@@ -82,7 +83,7 @@ export default function Home() {
               density: {
                 enable: true,
               },
-              value: 80,
+              value: 160,
             },
             opacity: {
               value: 0.5,
@@ -98,8 +99,17 @@ export default function Home() {
         }}
         className="absolute inset-0"
       />
-      {/* GitHub Link - Top Right */}
-      <div className="absolute top-6 right-6 z-50">
+      {/* Top Right Links */}
+      <div className="absolute top-6 right-6 z-50 flex gap-3">
+        <a
+          href="https://buymeacoffee.com/vikrambattalapalli"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 bg-yellow-600 hover:bg-yellow-500 text-white px-3 py-2 rounded-md transition-colors duration-200 shadow-lg"
+        >
+          <SiKofi size={16} />
+          <span className="font-medium text-sm">Buy me a coffee</span>
+        </a>
         <a
           href="https://github.com/BigVik193/pastepal"
           target="_blank"
@@ -112,7 +122,7 @@ export default function Home() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8 text-center">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8 py-16 text-center">
         <div className="max-w-4xl mx-auto space-y-8">
           {/* App Title */}
           <h1 className="text-6xl sm:text-8xl font-bold mb-4 text-gray-800 drop-shadow-lg">
@@ -134,6 +144,34 @@ export default function Home() {
             </p>
           </div>
 
+          {/* Installation */}
+          <div className="space-y-6">
+            <h2 className="text-2xl font-semibold text-gray-800">Installation</h2>
+            <div className="flex flex-col gap-4 justify-center items-center">
+              <a
+                href="/PastePal-1.0.2.dmg"
+                download
+                className="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200"
+              >
+                <FaApple size={20} />
+                <span>Download for macOS</span>
+              </a>
+              <div className="flex items-center gap-2 text-gray-400 text-sm">
+                <span>or</span>
+                <div className="text-gray-600">
+                  <code className="bg-gray-100 px-3 py-1 rounded">brew install --cask BigVik193/tap/pastepal</code>
+                </div>
+              </div>
+            </div>
+            
+            <div className="text-xs text-gray-500 max-w-md mx-auto">
+              <p className="mb-2">If you see "PastePal is damaged", run:</p>
+              <code className="bg-gray-100 px-2 py-1 rounded text-xs">
+                sudo xattr -rd com.apple.quarantine /Applications/PastePal.app
+              </code>
+            </div>
+          </div>
+
           {/* Key Features */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12 max-w-3xl mx-auto">
             <div className="p-4 rounded-lg bg-white/80 backdrop-blur-sm border border-gray-200 shadow-lg">
@@ -148,17 +186,6 @@ export default function Home() {
               <h3 className="font-semibold text-gray-800 mb-2">Persistent Settings</h3>
               <p className="text-sm text-gray-700">Custom shortcuts saved and restored between sessions</p>
             </div>
-          </div>
-
-          {/* Download Button */}
-          <div className="mt-12">
-            <a
-              href="#"
-              className="inline-flex items-center gap-3 bg-gray-800 hover:bg-gray-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-            >
-              <FaApple size={24} />
-              <span className="text-lg">Download for macOS</span>
-            </a>
           </div>
 
           {/* Quick Start */}
