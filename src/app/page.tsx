@@ -1,104 +1,95 @@
 'use client';
 
-import { useCallback, useEffect } from 'react';
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
-import type { Container } from "@tsparticles/engine";
 import { FaGithub, FaApple, FaStar } from 'react-icons/fa';
 import { SiKofi } from 'react-icons/si';
 
 export default function Home() {
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    });
-  }, []);
-
-  const particlesLoaded = useCallback(async (container: Container | undefined) => {
-    // Particles loaded callback
-  }, []);
-
   return (
-    <div className="relative min-h-screen w-full overflow-hidden">
-      <Particles
-        id="tsparticles"
-        particlesLoaded={particlesLoaded}
-        options={{
-          fullScreen: {
-            enable: false,
-            zIndex: 0
-          },
-          background: {
-            color: {
-              value: "transparent",
-            },
-          },
-          fpsLimit: 120,
-          interactivity: {
-            events: {
-              onClick: {
-                enable: true,
-                mode: "push",
-              },
-              onHover: {
-                enable: true,
-                mode: "repulse",
-              },
-              resize: {
-                enable: true,
-              },
-            },
-            modes: {
-              push: {
-                quantity: 4,
-              },
-              repulse: {
-                distance: 200,
-                duration: 0.4,
-              },
-            },
-          },
-          particles: {
-            color: {
-              value: ["#ffe300", "#ff1f00", "#2d00ff", "#ffebeb"],
-            },
-            links: {
-              color: "#ffffff",
-              distance: 150,
-              enable: true,
-              opacity: 0.3,
-              width: 1,
-            },
-            move: {
-              direction: "none",
-              enable: true,
-              outModes: {
-                default: "bounce",
-              },
-              random: false,
-              speed: 1,
-              straight: false,
-            },
-            number: {
-              density: {
-                enable: true,
-              },
-              value: 160,
-            },
-            opacity: {
-              value: 0.5,
-            },
-            shape: {
-              type: "circle",
-            },
-            size: {
-              value: { min: 3, max: 8 },
-            },
-          },
-          detectRetina: true,
-        }}
-        className="absolute inset-0"
-      />
+    <div className="relative min-h-screen w-full overflow-hidden" style={{ backgroundColor: '#FAFAF7' }}>
+      {/* Animated Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Floating Particles */}
+        {Array.from({ length: 20 }).map((_, i) => {
+          const size = Math.random() * 8 + 8;
+          return (
+            <div
+              key={i}
+              className="absolute rounded-full opacity-70"
+              style={{
+                backgroundColor: '#ff6f61',
+                width: size + 'px',
+                height: size + 'px',
+                left: Math.random() * 100 + '%',
+                top: Math.random() * 100 + '%',
+                animation: `float ${Math.random() * 6 + 4}s infinite ease-in-out`,
+                animationDelay: Math.random() * 4 + 's',
+              }}
+            />
+          );
+        })}
+        
+        {/* Larger floating elements */}
+        {Array.from({ length: 6 }).map((_, i) => {
+          const size = Math.random() * 16 + 12;
+          return (
+            <div
+              key={`large-${i}`}
+              className="absolute rounded-full opacity-60"
+              style={{
+                backgroundColor: '#ff6f61',
+                width: size + 'px',
+                height: size + 'px',
+                left: Math.random() * 100 + '%',
+                top: Math.random() * 100 + '%',
+                animation: `floatReverse ${Math.random() * 8 + 6}s infinite ease-in-out`,
+                animationDelay: Math.random() * 3 + 's',
+              }}
+            />
+          );
+        })}
+      </div>
+      
+      {/* CSS Keyframes */}
+      <style jsx>{`
+        @keyframes float {
+          0% {
+            transform: translateY(0px) translateX(0px);
+          }
+          25% {
+            transform: translateY(-15px) translateX(10px);
+          }
+          50% {
+            transform: translateY(8px) translateX(-12px);
+          }
+          75% {
+            transform: translateY(-6px) translateX(14px);
+          }
+          100% {
+            transform: translateY(0px) translateX(0px);
+          }
+        }
+        
+        @keyframes floatReverse {
+          0% {
+            transform: translateY(0px) translateX(0px);
+          }
+          20% {
+            transform: translateY(12px) translateX(-10px);
+          }
+          40% {
+            transform: translateY(-14px) translateX(8px);
+          }
+          60% {
+            transform: translateY(10px) translateX(-6px);
+          }
+          80% {
+            transform: translateY(-8px) translateX(12px);
+          }
+          100% {
+            transform: translateY(0px) translateX(0px);
+          }
+        }
+      `}</style>
       {/* Top Right Links */}
       <div className="absolute top-6 right-6 z-50 flex gap-3">
         <a
@@ -111,7 +102,7 @@ export default function Home() {
           <span className="font-medium text-sm">Buy me a coffee</span>
         </a>
         <a
-          href="https://github.com/BigVik193/pastepal"
+          href="https://github.com/BigVik193/pasteman"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-3 py-2 rounded-md transition-colors duration-200 shadow-lg"
@@ -126,7 +117,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto space-y-8">
           {/* App Title */}
           <h1 className="text-6xl sm:text-8xl font-bold mb-4 text-gray-800 drop-shadow-lg">
-            PastePal
+            Pasteman
           </h1>
           
           {/* Subtitle */}
@@ -149,8 +140,9 @@ export default function Home() {
             <h2 className="text-2xl font-semibold text-gray-800">Installation</h2>
             <div className="flex flex-col gap-4 justify-center items-center">
               <a
-                href="/PastePal-1.0.2.dmg"
-                download
+                href="https://apps.apple.com/app/pasteman"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200"
               >
                 <FaApple size={20} />
@@ -159,15 +151,15 @@ export default function Home() {
               <div className="flex items-center gap-2 text-gray-400 text-sm">
                 <span>or</span>
                 <div className="text-gray-600">
-                  <code className="bg-gray-100 px-3 py-1 rounded">brew install --cask BigVik193/tap/pastepal</code>
+                  <code className="bg-gray-100 px-3 py-1 rounded">brew install --cask BigVik193/tap/pasteman</code>
                 </div>
               </div>
             </div>
             
             <div className="text-xs text-gray-500 max-w-md mx-auto">
-              <p className="mb-2">If you see "PastePal is damaged", run:</p>
+              <p className="mb-2">If you see "Pasteman is damaged", run:</p>
               <code className="bg-gray-100 px-2 py-1 rounded text-xs">
-                sudo xattr -rd com.apple.quarantine /Applications/PastePal.app
+                sudo xattr -rd com.apple.quarantine /Applications/Pasteman.app
               </code>
             </div>
           </div>
@@ -191,6 +183,11 @@ export default function Home() {
           {/* Quick Start */}
           <div className="mt-12 text-sm text-gray-500 drop-shadow">
             <p>Default shortcuts: Cmd+Shift+[1,2,7,8,9] • Fully customizable through Settings interface</p>
+          </div>
+
+          {/* Privacy Policy */}
+          <div className="mt-8 text-xs text-gray-400">
+            <p><strong>Privacy Policy:</strong> We do not collect any personal information or data</p>
           </div>
         </div>
       </div>

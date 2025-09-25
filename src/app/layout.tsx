@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PastePal - macOS Multiple Clipboard Manager",
+  title: "Pasteman - macOS Multiple Clipboard Manager",
   description: "A lightweight macOS menu bar app with 10 independent clipboard slots and fully configurable keyboard shortcuts. Store multiple items simultaneously across all applications with persistent settings.",
 };
 

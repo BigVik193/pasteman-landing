@@ -6,7 +6,11 @@
       "WebSearch",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:www.vantajs.com)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(find:*)",
+      "Bash(pnpm build:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm dev:*)"
     ],
     "deny": [],
     "ask": []
